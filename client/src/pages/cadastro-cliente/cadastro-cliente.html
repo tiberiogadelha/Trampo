@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro de Cliente</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="form-cadastro">
+    <ion-avatar item-start>
+      <img src="assets/imgs/default-avatar.png">
+    </ion-avatar>
+    <ion-item class="item">
+      <ion-label>Nome Completo</ion-label>
+      <ion-input type="text" pattern=".{4,}" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nome de Usuário</ion-label>
+      <ion-input type="text" pattern=".{4,}" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Confirme sua Senha</ion-label>
+      <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button round full class="cadastro_cliente">Cadastrar</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
