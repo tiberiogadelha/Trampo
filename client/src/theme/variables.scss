@@ -38,7 +38,9 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  alert:	  #FFDF00,
+  purple:	  #9027B0
 );
 
 
@@ -86,3 +88,15 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+// @import "granite";
+@font-face {
+    font-family: "Granite";
+    font-weight: normal;
+    font-style: normal;
+    src: local("Granite"), local("Granite-Regular"),
+		url("#{$font-path}/Granite-regular.ttf") format("truetype"),
+		url("#{$font-path}/Granite-regular.woff2") format("woff2"),
+        url("#{$font-path}/Granite-regular.woff") format("woff");
+}
+// -----------------------------------------------------------------
