@@ -21,10 +21,6 @@ export class CadastroFornecedorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  goTo(){
-    console.log('this.anArray',this.anArray);
-    this.data=true;
-  }
   Add(){
    this.anArray.push({'value':''});
   }
