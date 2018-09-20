@@ -14,7 +14,7 @@ import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fo
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
     CadastroClientePage,
     CadastroFornecedorPage
   ],
@@ -32,7 +32,7 @@ import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fo
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
     CadastroClientePage,
     CadastroFornecedorPage
 
