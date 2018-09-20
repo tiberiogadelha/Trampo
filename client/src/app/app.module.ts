@@ -6,20 +6,31 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { CadastroClientePage } from '../pages/cadastro-cliente/cadastro-cliente';
+import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fornecedor';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    CadastroClientePage,
+    CadastroFornecedorPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      statusbarPadding: true,},
+      { links: [
+        { component: CadastroClientePage, name:'CadastroClientePage', segment: 'cadastro-cliente'},
+        { component: CadastroFornecedorPage, name:'CadastroFornecedorPage', segment: 'cadastro-fornecedor'}
+      ]})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CadastroClientePage,
+    CadastroFornecedorPage
   ],
   providers: [
     StatusBar,
