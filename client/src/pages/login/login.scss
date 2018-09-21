@@ -1,15 +1,11 @@
 // Login Page Configurations
 
-.trampo-font{
+ion-content.login-content {
     font-family: Dessau-Light;
 }
 
-.logo{
-	width: 10em;
-	height: 10em;
-}
-
 p {
+    margin: 10px;
     display: flex;
     align-items: flex-end ;
     flex-direction: column;
@@ -31,6 +27,7 @@ tr {
 }
 
 .foot-note {
-	opacity: 0.5;
-	color: black;
+    opacity: 0.5;
+    color: black;
+    font-size: 11px;
 }
