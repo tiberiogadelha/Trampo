@@ -1,26 +1,28 @@
-ion-header.cadastro-header {
+ion-header.cadastro-fornecedor-header {
     font-family: Dessau-Light;
-    
+    font-weight: bold;	
+
     display: flex;
-    align-items: center;
     flex-direction: column;
- 	background: transparent !important;
-	
+    align-items: center;
+
+    color:	black;
+	background: linear-gradient(to top, white 0%, #DE3C58 100%);
 }
 
 ion-content.cadastro-content {
     font-family: Dessau-Light;
     
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
  	background: transparent !important;
 }
 
 div {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
  	background: transparent !important;
 }
 
@@ -43,4 +45,3 @@ button {
 .item-ios, .item-md {
   	background: transparent;
 }
-

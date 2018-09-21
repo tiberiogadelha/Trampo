@@ -1,27 +1,22 @@
-<!--
-  Generated template for the CadastroFornecedorPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header class="cadastro-header">
+<ion-header class="cadastro-fornecedor-header">
   <ion-navbar>
-    <ion-title>Cadastro de Fornecedor</ion-title>
+    <h5>Cadastro de Fornecedor</h5>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="cadastro-content">
+<ion-content class="cadastro-fornecedor-content">
 
-<div padding>
+  <div padding>
     <ion-list>
 
       <ion-avatar item-start>
         <ion-row>
-          <ion-col col-6>
-            <img class="avatar" src="assets/imgs/default-avatar.png">
+          <ion-col col-5>
+            <img class="avatar" src="assets/imgs/default-avatar2.png">
           </ion-col>
-          <ion-col col-6>
-            <p color="dark">Escolha um avatar</p>
+          <ion-col col-5>
+            <p color="dark">Escolha seu avatar</p>
             <button ion-button color="pink" round small>Inserir</button>  
           </ion-col>
         </ion-row>
@@ -39,15 +34,13 @@
         <ion-label floating> Email</ion-label>
         <ion-input type="email"></ion-input>
       </ion-item>
-
-
       <ion-item *ngFor="let att of anArray; let idx = index">
             <ion-label floating>{{att.label}}Especialidade {{idx+1}}</ion-label>
             <ion-input type="text"  [(ngModel)]="anArray[idx].value"></ion-input>
       </ion-item>
-      <button class="especialidades" ion-button round small color="dark" (click)="Add()">Adicionar Especialidade</button>
-
-
+      <ion-item>
+        <button class="especialidades" ion-button round small color="dark" (click)="Add()">Adicionar Especialidade</button>
+      </ion-item>
       <ion-item>
         <ion-label floating>Senha</ion-label>
         <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
@@ -61,6 +54,6 @@
       </ion-item>
       
     </ion-list> 
-</div>
+  </div>
 
 </ion-content>
