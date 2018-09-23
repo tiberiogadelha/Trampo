@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ufcg.model.Usuario;
+import br.com.ufcg.models.Usuario;
 import br.com.ufcg.repository.UsuarioRepository;
 
 @Service
@@ -15,7 +15,7 @@ public class UsuarioService {
 	UsuarioRepository usuarioRepository;
 	
 	public Usuario getByLogin(String login) throws Exception {
-		Optional<Usuario> userToFind = usuarioRepository.findById(login);
+		Optional<Usuario> userToFind = usuarioRepository.findByLogin(login);
 		
 		if(!userToFind.isPresent()) {
 			throw new Exception("Usuario nao encontrado");
@@ -24,8 +24,8 @@ public class UsuarioService {
 		return userToFind.get();
 	}
 
-	public boolean checkUser(String login, String password) {
-		Usuario userToCheck = usuarioRepository.findByLoginAndPassword(login, password);
+	public boolean checkUser(String login, String senha) {
+		Usuario userToCheck = usuarioRepository.findByLoginAndSenha(login, senha);
 		
 		if(userToCheck == null) {
 			return false;
