@@ -31,7 +31,7 @@ public class LoginController {
     public static final Integer HORAS = (3600 * 1000);
     public static final Integer HORAS_NO_DIA = 24;
 
-    @RequestMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @RequestMapping(value = "/api/login", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public ResponseEntity<LoginResponse> login(@RequestBody Usuario usuario) throws Exception {
 
 
@@ -58,7 +58,7 @@ public class LoginController {
         return new ResponseEntity<>(new LoginResponse(token), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/usuario", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @RequestMapping(value = "/api/usuario", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) throws Exception {
     	Usuario retorno = usuarioService.criarUsuario(usuario);
     	
