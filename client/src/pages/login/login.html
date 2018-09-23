@@ -1,65 +1,51 @@
-<ion-header class="login">
-  <div class="bar bar-header bar-royal">
-    <h4 class="title">TRAMPO</h4>
-  </div>
-</ion-header>
 
-<ion-content class="login">
-    <p>
-      <tr>
-        Cadastro de Fornecedor
-        <button class="cadastro_fornecedor" ion-button color="primary" round>
-         Cadastrar &nbsp; <!-- non-breaking space -->
-          <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
-        </button>
-      </tr>
-    </p>
-    <div padding>
+<ion-content class="login-content">
+  <p>
+    <a (click)="cadastroFornecedor()"><u>Deseja trabalhar conosco?</u></a>
+  </p>
+
+  <div padding>
     <ion-avatar item-start>
-      <img src="assets/imgs/default-avatar.png">
+      <img class="logo" src="assets/imgs/trampo-logo.png">
     </ion-avatar>
-      <tr>
+    
+    <tr>
 
         <ion-item>
           <ion-label floating>Usuário</ion-label>
           <ion-input type="text" pattern=".{4,}" value=""></ion-input>
         </ion-item>
-
         <ion-item>
           <ion-label floating>Senha</ion-label>
           <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
         </ion-item>
+        <p>
+          <a href="http://www.google.com">Esqueceu a Senha?</a>
+        </p>
 
-      </tr> 
+    </tr> 
 
-      <ion-item>
-        <td>
-          <button class="login_usuario" ion-button color="alert" round> 
-              <ion-icon ios="ios-information-circle" md="md-information-circle">                  
-              </ion-icon> 
-              &nbsp; <!-- non-breaking space -->  
-              Esqueci
-          </button>
-        </td>
-        <td>
-          <button class="login_usuario" ion-button color="primary" round>
-            <ion-icon ios="ios-log-in" md="md-log-in">
-            </ion-icon>
-            &nbsp; <!-- non-breaking space -->
-            Login
-          </button>
-        </td>
-   
-        <button class="cadastro_usuario" ion-button color="primary" round>
-          <ion-icon ios="ios-contacts" md="md-contacts">
-          </ion-icon>
-          &nbsp; <!-- non-breaking space -->
-          Cadastro de Usuario  
-        </button>
-      </ion-item>
+    <ion-item>
+      <button ion-button full color="pink" round>
+        <ion-icon ios="ios-log-in" md="md-log-in">
+        </ion-icon>
+        &nbsp; <!-- non-breaking space -->
+        Login
+      </button>
+    </ion-item>
+    <ion-item>
+      <button full ion-button color="dark" round (click)="cadastroCliente()">
+        <ion-icon ios="ios-contacts" md="md-contacts">
+        </ion-icon>
+        &nbsp; <!-- non-breaking space -->
+        Cadastre-se
+      </button>
+    </ion-item>
 
-    </div>
-    <div class="botton">
-      <p class="foot-note">&copy; 2018 Trampo - Todos os direitos reservados</p>  
-    </div>
+  </div>
+
+  <div class="botton">
+    <p class="foot-note">&copy; 2018 Trampo - Todos os direitos reservados</p>  
+  </div>
+
 </ion-content>
