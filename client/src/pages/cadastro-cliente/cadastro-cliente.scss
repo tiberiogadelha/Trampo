@@ -1,11 +1,37 @@
-page-cadastro-cliente {
-    
-}
-
-.trampo-font{
+ion-header.cadastro-cliente-header {
     font-family: Dessau-Light;
+    font-weight: bold;	
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    color:	black;
+	background: linear-gradient(to top, white 0%, #DE3C58 100%);
 }
 
-.bold{
-    font-weight: bold;
+ion-content.cadastro-cliente-content {
+    font-family: Dessau-Light;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+ 	background: transparent !important;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 	background: transparent !important;
+}
+
+h5 {
+    font-weight: bold;	
+}
+
+p {
+    font-size: 1em;
+    align-items: left;
+ 	background: transparent !important;
 }

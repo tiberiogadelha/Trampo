@@ -1,11 +1,22 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Projeto de Engenharia de Software
-    </ion-title>
-  </ion-navbar>
+
+<ion-header class="home-header">
+    <h5>Olá USUARIO</h5> 
 </ion-header>
 
-<ion-content padding>
-  Estrutura inicial do projeto [Hello World]
+<ion-content class="home-content">
+
+  <div padding>
+    <ion-list class="form-logout">
+
+      <ion-item>    	
+        <button class="logout" ion-button round full color="pink" (click)="login()">
+				LOGOUT
+	            &nbsp; <!-- non-breaking space -->  
+				<ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>
+		</button>
+      </ion-item>
+
+    </ion-list>
+  </div>
+
 </ion-content>

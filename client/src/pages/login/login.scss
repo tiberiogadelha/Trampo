@@ -1,34 +1,15 @@
 // Login Page Configurations
 
-.login {
-	font: 10%;
-	font-size: 18px; 
-	font-weight: 300px; 
-	line-height: 30px;
-    font-family: "Noto Sans";
-}
-
-ion-header.login {
-    color: white;
-	background: linear-gradient(to top, #FF7700 0%, #9027B0 60%);
-}
-
-ion-content.login {
-	background: radial-gradient(white 0%, #FF7700 100%);
-}
-
-h4 {
-    font-family: Granite;
-    font-size: 20px;
+ion-content.login-content {
+    font-family: Dessau-Light;
 }
 
 p {
     display: flex;
     align-items: flex-end ;
     flex-direction: column;
-	margin: 10px 0px 10px 0px;
 
-  	font-size: 13px;
+    margin: 0.2em;
 }
 
 div {
@@ -42,41 +23,12 @@ tr {
 	color: white; 
 }
 
-.button.cadastro_fornecedor {
-    width: 110px;
-	height: 25px;
-
-    color: white;
-	font-size: 12px;
-	background-color: #33CD5F;
-}
-
-.button.login_usuario {
-    width: 100px;
-	height: 40px;
-	margin: 10px 5px 5px 0px;
-
-    color: white;
-	font-size: 14px;
-	background-color: #9027B0;
-}
-
-.button.cadastro_usuario {
-    width: 205px;
-	height: 40px;
-
-    color: white;
-	font-size: 14px;
-	font-weight: bold;
-	background-color: #33CD5F;
-}
-
 .item-ios, .item-md {
   background: transparent;
 }
 
 .foot-note {
-	opacity: 0.5;
-	color: black;
-	font-size: 11px;
+    opacity: 0.5;
+    color: black;
+    font-size: 11px;
 }
