@@ -18,7 +18,7 @@ import io.jsonwebtoken.SignatureException;
 
 public class TokenFilter extends GenericFilterBean {
 
-
+	private String SECRET = "ProjetoES";
     private UsuarioService usuarioService;
 
     @Override
@@ -41,7 +41,8 @@ public class TokenFilter extends GenericFilterBean {
 
         // Verificar se o token é válido
         try {
-            String tokenBody = Jwts.parser().setSigningKey("banana").parseClaimsJws(token).getBody().getSubject();
+        	
+            String tokenBody = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody().getSubject();
 
             validaToken(tokenBody, req.getRequestURI());
 
