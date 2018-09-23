@@ -18,6 +18,15 @@ public class Especialidade {
 	@Column(name = "TX_NOME", nullable = false)
 	private String nome;
 
+	public Especialidade(String nome) {
+		super();
+		this.nome = nome;
+	}
+	
+	public Especialidade() {
+		super();
+	}
+
 	public Long getId() {
 		return id;
 	}
