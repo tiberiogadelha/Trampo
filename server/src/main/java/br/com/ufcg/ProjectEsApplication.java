@@ -2,7 +2,6 @@ package br.com.ufcg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
@@ -11,7 +10,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import br.com.ufcg.jwt.TokenFilter;
 
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication
 public class ProjectEsApplication {
 
 	public static void main(String[] args) {

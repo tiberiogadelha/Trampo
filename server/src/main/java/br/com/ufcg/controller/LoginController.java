@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ufcg.domain.Cliente;
+import br.com.ufcg.domain.Fornecedor;
 import br.com.ufcg.domain.Usuario;
 import br.com.ufcg.domain.vo.LoginForm;
 import br.com.ufcg.service.UsuarioService;
@@ -63,6 +64,13 @@ public class LoginController {
     @RequestMapping(value = "api/cliente", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public ResponseEntity<Usuario> criarCliente(@RequestBody Cliente cliente) throws Exception {
     	Usuario retorno = usuarioService.criarUsuario(cliente);
+    	
+    	return new ResponseEntity<>(retorno, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "api/fornecedor", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public ResponseEntity<Usuario> criarFornecedor(@RequestBody Fornecedor fornecedor) throws Exception {
+    	Usuario retorno = usuarioService.criarUsuario(fornecedor);
     	
     	return new ResponseEntity<>(retorno, HttpStatus.OK);
     }
