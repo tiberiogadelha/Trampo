@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import br.com.ufcg.domain.enums.TipoUsuario;
+
 @Entity
 @DiscriminatorValue(value = "Fornecedor")
 public class Fornecedor extends Usuario {
@@ -21,12 +23,12 @@ public class Fornecedor extends Usuario {
 	
 	public Fornecedor(String nomeCompleto, String login, String fotoPerfil, 
 			String email, String senha, List<Especialidade> listaEspecialidades) {
-		super(nomeCompleto, login, fotoPerfil, email, senha);
+		super(nomeCompleto, login, fotoPerfil, email, senha, TipoUsuario.FORNECEDOR);
 		this.listaEspecialidades = listaEspecialidades;
 	}
 
 	public Fornecedor() {
-		super();
+		super(null, null, null, null, null, TipoUsuario.FORNECEDOR);
 	}
 
 	public List<Especialidade> getListaEspecialidades() {

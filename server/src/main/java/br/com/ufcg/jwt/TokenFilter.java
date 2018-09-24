@@ -1,30 +1,34 @@
 package br.com.ufcg.jwt;
 
-import io.jsonwebtoken.Jwts;
-import br.com.ufcg.service.UsuarioService;
-import org.hibernate.annotations.Filter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import br.com.ufcg.service.UsuarioService;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
 public class TokenFilter extends GenericFilterBean {
 
-
     private UsuarioService usuarioService;
+    
+    // CONSTANTES NECESSÁRIAS AO CONTROLLER
+    public static final String SECRET = "ProjetoES";
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        if(usuarioService==null){
+    	if (usuarioService==null){
             ServletContext servletContext = request.getServletContext();
             WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
             usuarioService = webApplicationContext.getBean(UsuarioService.class);
@@ -33,7 +37,7 @@ public class TokenFilter extends GenericFilterBean {
         HttpServletRequest req = (HttpServletRequest) request;
 
         String header = req.getHeader("Authorization");
-        if(header == null || !header.startsWith("Bearer ")) {
+        if (header == null || !header.startsWith("Bearer ")) {
             throw new ServletException("Token inexistente ou inválido.");
         }
 
@@ -41,11 +45,11 @@ public class TokenFilter extends GenericFilterBean {
 
         // Verificar se o token é válido
         try {
-            String tokenBody = Jwts.parser().setSigningKey("banana").parseClaimsJws(token).getBody().getSubject();
+            String tokenBody = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody().getSubject();
 
             validaToken(tokenBody, req.getRequestURI());
 
-        }catch(SignatureException e) {
+        } catch(SignatureException e) {
             ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token inválido.");
         }
 
@@ -57,13 +61,13 @@ public class TokenFilter extends GenericFilterBean {
         String login = usuario[0];
         String password = usuario[1];
 
-        if(!usuarioService.checkUser(login, password)) {
+        if (!usuarioService.checkUser(login, password)) {
             throw new ServletException("Token com acesso bloqueado");
         }
 
         String[] paths = requestURI.split("/");
         String requestEmail = paths[3];
-        if(!login.equals(requestEmail)) {
+        if (!login.equals(requestEmail)) {
             throw new ServletException("Token com acesso bloqueado");
         }
 

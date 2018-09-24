@@ -15,7 +15,7 @@ public class UsuarioService {
 	public Usuario getByLogin(String login) throws Exception {
 		Usuario usuario = usuarioRepository.findByLogin(login);
 		
-		if (usuario != null) {
+		if (usuario == null) {
 			throw new Exception("Usuario nao encontrado");
 		}
 		

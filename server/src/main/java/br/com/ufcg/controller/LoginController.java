@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ufcg.domain.Cliente;
 import br.com.ufcg.domain.Usuario;
+import br.com.ufcg.domain.vo.LoginForm;
 import br.com.ufcg.service.UsuarioService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -31,8 +33,8 @@ public class LoginController {
     public static final Integer HORAS = (3600 * 1000);
     public static final Integer HORAS_NO_DIA = 24;
 
-    @RequestMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public ResponseEntity<LoginResponse> login(@RequestBody Usuario usuario) throws Exception {
+    @RequestMapping(value = "api/login", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginForm usuario) throws Exception {
 
 
         if (usuario.getLogin() == null || usuario.getSenha() == null) {
@@ -58,9 +60,9 @@ public class LoginController {
         return new ResponseEntity<>(new LoginResponse(token), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/usuario", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) throws Exception {
-    	Usuario retorno = usuarioService.criarUsuario(usuario);
+    @RequestMapping(value = "api/cliente", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public ResponseEntity<Usuario> criarCliente(@RequestBody Cliente cliente) throws Exception {
+    	Usuario retorno = usuarioService.criarUsuario(cliente);
     	
     	return new ResponseEntity<>(retorno, HttpStatus.OK);
     }

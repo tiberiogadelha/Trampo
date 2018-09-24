@@ -1,24 +1,20 @@
 package br.com.ufcg.domain;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.UniqueConstraint;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import br.com.ufcg.domain.enums.TipoUsuario;
 
 @Entity
 @Table(name = "TAB_USUARIO", uniqueConstraints = @UniqueConstraint(columnNames = "TX_LOGIN", name = "login"))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "CD_TIPO", discriminatorType = DiscriminatorType.STRING)
 public abstract class Usuario {
 
 	@Id
@@ -41,18 +37,19 @@ public abstract class Usuario {
 	@Column(name = "TX_SENHA", nullable = false)
 	private String senha;
 
-	@Column(name = "CD_TIPO", nullable = false, insertable = false, updatable = false)
-	@Enumerated(EnumType.STRING)
+	@Column(name = "CD_TIPO", nullable = false, updatable = false)
+	@Enumerated
 	private TipoUsuario tipo;
 
 	public Usuario(String nomeCompleto, String login, String fotoPerfil, 
-			String email, String senha) {
+			String email, String senha, TipoUsuario tipo) {
 		super();
 		this.nomeCompleto = nomeCompleto;
 		this.login = login;
 		this.fotoPerfil = fotoPerfil;
 		this.email = email;
 		this.senha = senha;
+		this.tipo = tipo;
 	}
 
 	public Usuario() {

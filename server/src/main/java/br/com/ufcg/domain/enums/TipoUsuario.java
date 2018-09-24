@@ -2,16 +2,16 @@ package br.com.ufcg.domain.enums;
 
 public enum TipoUsuario {
 	
-	CLIENTE("Cliente"),
-	FORNECEDOR("Fornecedor");
+	CLIENTE(0),
+	FORNECEDOR(1);
 	
-	private final String tipo;
+	private final Integer tipo;
 	
-	TipoUsuario(String tipo) {
+	TipoUsuario(Integer tipo) {
 		this.tipo = tipo;
 	}
 	
-	public String getTipo() {
+	public Integer getTipo() {
 		return this.tipo;
 	}
 }
