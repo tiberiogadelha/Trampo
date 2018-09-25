@@ -7,10 +7,10 @@ ion-header.cadastro-fornecedor-header {
     align-items: center;
 
     color:	black;
-	background: linear-gradient(to top, white 0%, #DE3C58 100%);
+	background: #EFEEF4;
 }
 
-ion-content.cadastro-content {
+ion-content.cadastro-fornecedor-content {
     font-family: Dessau-Light;
     
     display: flex;
@@ -28,10 +28,6 @@ div {
 
 p {
     font-size: 1em;
-}
-
-ion-label {
-	font-size:	1.1em;
 }
 
 button.especialidades {

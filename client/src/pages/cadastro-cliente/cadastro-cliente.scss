@@ -3,19 +3,19 @@ ion-header.cadastro-cliente-header {
     font-weight: bold;	
 
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 
     color:	black;
-	background: linear-gradient(to top, white 0%, #DE3C58 100%);
+	background: #EFEEF4;
 }
 
 ion-content.cadastro-cliente-content {
     font-family: Dessau-Light;
     
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
  	background: transparent !important;
 }
 
@@ -32,6 +32,4 @@ h5 {
 
 p {
     font-size: 1em;
-    align-items: left;
- 	background: transparent !important;
 }
