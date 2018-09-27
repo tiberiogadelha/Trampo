@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CadastroClientePage } from '../cadastro-cliente/cadastro-cliente';
 import { CadastroFornecedorPage } from '../cadastro-fornecedor/cadastro-fornecedor';
+import { RedefinicaoSenhaPage } from '../redefinicao-senha/redefinicao-senha';
 
 @Component({
   selector: 'login',
@@ -21,4 +22,7 @@ export class LoginPage {
     this.navCtrl.push(CadastroFornecedorPage);
   }
 
+  redefinicaoSenha(){
+    this.navCtrl.push(RedefinicaoSenhaPage);
+  }
 }

@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CadastroClientePage } from '../pages/cadastro-cliente/cadastro-cliente';
 import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fornecedor';
+import { RedefinicaoSenhaPage } from '../pages/redefinicao-senha/redefinicao-senha';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fo
     HomePage,
     LoginPage,
     CadastroClientePage,
-    CadastroFornecedorPage
+    CadastroFornecedorPage,
+    RedefinicaoSenhaPage,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fo
       { links: [
         { component: CadastroClientePage, name:'CadastroClientePage', segment: 'cadastro-cliente'},
         { component: CadastroFornecedorPage, name:'CadastroFornecedorPage', segment: 'cadastro-fornecedor'},
-        { component: LoginPage, name: 'LoginPage', segment: 'login'}
+        { component: LoginPage, name: 'LoginPage', segment: 'login'},
+        { component: RedefinicaoSenhaPage, name: 'RedeficicaoSenhaPage', segment: 'redeficicao-senha'}
       ]})
   ],
   bootstrap: [IonicApp],
@@ -34,7 +37,8 @@ import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fo
     HomePage,
     LoginPage,
     CadastroClientePage,
-    CadastroFornecedorPage
+    CadastroFornecedorPage,
+    RedefinicaoSenhaPage,
 
   ],
   providers: [
