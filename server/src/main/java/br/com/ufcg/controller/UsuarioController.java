@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ufcg.domain.Cliente;
+import br.com.ufcg.domain.Especialidade;
 import br.com.ufcg.domain.Fornecedor;
 import br.com.ufcg.domain.Usuario;
 import br.com.ufcg.service.UsuarioService;
@@ -36,16 +37,28 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "api/cliente", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-	public ResponseEntity<Usuario> criarCliente(@RequestBody Cliente cliente) throws Exception {
+	public ResponseEntity<Usuario> cadastrarCliente(@RequestBody Cliente cliente) throws Exception {
 		Usuario retorno = usuarioService.criarUsuario(cliente);
 	    	
 		return new ResponseEntity<>(retorno, HttpStatus.OK);
 	}
 	    
 	@RequestMapping(value = "api/fornecedor", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-	public ResponseEntity<Usuario> criarFornecedor(@RequestBody Fornecedor fornecedor) throws Exception {
+	public ResponseEntity<Usuario> cadastrarFornecedor(@RequestBody Fornecedor fornecedor) throws Exception {
 		Usuario retorno = usuarioService.criarUsuario(fornecedor);
 	    	
 		return new ResponseEntity<>(retorno, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "api/especialidade", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	public ResponseEntity<Especialidade> cadastraEspecialidade(@RequestBody Especialidade especialidade) throws Exception {
+		Especialidade retorno = usuarioService.criarEspecialidade(especialidade);
+	    	
+		return new ResponseEntity<>(retorno, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/api/especialidade", produces="application/json")
+	public @ResponseBody  List<Especialidade> listaEspecialidades(){
+		return usuarioService.getEspecialidades();
 	}
 }

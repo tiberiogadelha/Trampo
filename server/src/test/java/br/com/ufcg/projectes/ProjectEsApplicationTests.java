@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import br.com.ufcg.controller.UsuarioController;
 import br.com.ufcg.domain.Cliente;
 import br.com.ufcg.domain.Especialidade;
 import br.com.ufcg.domain.Fornecedor;
@@ -25,6 +26,9 @@ public class ProjectEsApplicationTests {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
+	@Autowired
+	UsuarioController uc;
+	
 	@Test
 	public void contextLoads() {
 		

@@ -9,6 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
 
 import br.com.ufcg.domain.enums.TipoUsuario;
 
@@ -30,7 +31,8 @@ public abstract class Usuario {
 
 	@Column(name = "CD_FOTO_PERFIL", nullable = false)
 	private String fotoPerfil;
-
+	
+	@Email(message = "Insira um email valido.")
 	@Column(name = "TX_EMAIL", nullable = false)
 	private String email;
 
