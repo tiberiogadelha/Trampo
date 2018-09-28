@@ -1,0 +1,43 @@
+ion-header.cadastro-fornecedor-header {
+    font-family: Dessau-Light;
+    font-weight: bold;	
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color:	black;
+	background: #EFEEF4;
+}
+
+ion-content.cadastro-fornecedor-content {
+    font-family: Dessau-Light;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 	background: transparent !important;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 	background: transparent !important;
+}
+
+p {
+    font-size: 1em;
+}
+
+button.especialidades {
+	margin-left:	2em;
+}
+
+button {
+	margin:	2em;
+}
+
+.item-ios, .item-md {
+  	background: transparent;
+}

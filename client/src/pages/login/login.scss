@@ -1,0 +1,34 @@
+// Login Page Configurations
+
+ion-content.login-content {
+    font-family: Dessau-Light;
+}
+
+p {
+    display: flex;
+    align-items: flex-end ;
+    flex-direction: column;
+
+    margin: 0.2em;
+}
+
+div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+ 	background: transparent !important;
+}
+
+tr {
+	color: white; 
+}
+
+.item-ios, .item-md {
+  background: transparent;
+}
+
+.foot-note {
+    opacity: 0.5;
+    color: black;
+    font-size: 11px;
+}

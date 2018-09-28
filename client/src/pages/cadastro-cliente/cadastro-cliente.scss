@@ -1,0 +1,35 @@
+ion-header.cadastro-cliente-header {
+    font-family: Dessau-Light;
+    font-weight: bold;	
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color:	black;
+	background: #EFEEF4;
+}
+
+ion-content.cadastro-cliente-content {
+    font-family: Dessau-Light;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 	background: transparent !important;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 	background: transparent !important;
+}
+
+h5 {
+    font-weight: bold;	
+}
+
+p {
+    font-size: 1em;
+}

@@ -1,0 +1,52 @@
+
+<ion-header class="cadastro-cliente-header">
+  <ion-navbar>
+    <h5>Cadastro de Cliente</h5>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cadastro-cliente-content">
+
+  <div padding>
+    <ion-list class="form-cadastro">
+
+      <ion-avatar item-start>
+        <ion-row>
+          <ion-col col-5>
+            <img src="assets/imgs/default-avatar.png">
+          </ion-col>
+          <ion-col col-5>
+            <p color="dark">Escolha seu avatar</p>
+            <button ion-button color="pink" round small>Inserir</button>  
+          </ion-col>        
+        </ion-row>
+      </ion-avatar>
+
+      <ion-item class="item">
+        <ion-label floating>Nome Completo</ion-label>
+        <ion-input type="text" pattern=".{4,}" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Nome de Usuário</ion-label>
+        <ion-input type="text" pattern=".{4,}" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating> Email</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Confirme sua Senha</ion-label>
+        <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button round full color="pink">Cadastrar</button>
+      </ion-item>
+
+    </ion-list>
+  </div>
+
+</ion-content>
