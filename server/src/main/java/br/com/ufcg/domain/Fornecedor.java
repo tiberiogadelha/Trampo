@@ -44,6 +44,4 @@ public class Fornecedor extends Usuario {
 	public String toString() {
 		return "Fornecedor " + super.getId() + ": "  + "nome - " + super.getNomeCompleto() + " | Especialidade(s) - " + listaEspecialidades.toString();
 	}
-	
-	
 }
