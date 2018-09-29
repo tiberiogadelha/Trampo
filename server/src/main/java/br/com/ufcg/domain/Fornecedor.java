@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -15,7 +16,7 @@ import br.com.ufcg.domain.enums.TipoUsuario;
 @DiscriminatorValue(value = "Fornecedor")
 public class Fornecedor extends Usuario {
 	
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
 	@JoinTable(name = "USUARIO_HAS_ESPECIALIDADE", 
 			joinColumns = { @JoinColumn(name="USUARIO_ID") }, 
 			inverseJoinColumns = { @JoinColumn(name = "ESPECIALIDADE_ID") })
@@ -37,5 +38,10 @@ public class Fornecedor extends Usuario {
 
 	public void setListaEspecialidades(List<Especialidade> listaEspecialidades) {
 		this.listaEspecialidades = listaEspecialidades;
+	}
+
+	@Override
+	public String toString() {
+		return "Fornecedor " + super.getId() + ": "  + "nome - " + super.getNomeCompleto() + " | Especialidade(s) - " + listaEspecialidades.toString();
 	}
 }

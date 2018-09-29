@@ -17,4 +17,9 @@ public class Cliente extends Usuario {
 	public Cliente() {
 		super(null, null, null, null, null, TipoUsuario.CLIENTE);
 	}
+	
+	@Override
+	public String toString() {
+		return "Cliente " + super.getId() + ": nome - " + super.getNomeCompleto();
+	}
 }

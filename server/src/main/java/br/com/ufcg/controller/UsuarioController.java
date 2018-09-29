@@ -1,14 +1,17 @@
 package br.com.ufcg.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ufcg.domain.Cliente;
@@ -20,12 +23,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
-public class LoginController {
+public class UsuarioController {
 
-    @Autowired
+	@Autowired
     private UsuarioService usuarioService;
-    
-    // CONSTANTES NECESSÁRIAS AO CONTROLLER
+	
+	// CONSTANTES NECESSÁRIAS AO CONTROLLER
     public static final String STRING_VAZIA = "";
     public static final String STRING_ESPACAMENTO = " ";
     public static final String USUARIO_NAO_EXISTENTE = "Usuario nao existe";
@@ -60,22 +63,41 @@ public class LoginController {
 
         return new ResponseEntity<>(new LoginResponse(token), HttpStatus.OK);
     }
-    
-    @RequestMapping(value = "api/cliente", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public ResponseEntity<Usuario> criarCliente(@RequestBody Cliente cliente) throws Exception {
-    	Usuario retorno = usuarioService.criarUsuario(cliente);
-    	
-    	return new ResponseEntity<>(retorno, HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "api/fornecedor", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public ResponseEntity<Usuario> criarFornecedor(@RequestBody Fornecedor fornecedor) throws Exception {
-    	Usuario retorno = usuarioService.criarUsuario(fornecedor);
-    	
-    	return new ResponseEntity<>(retorno, HttpStatus.OK);
-    }
+	
+	@GetMapping(value = "/api/cliente", produces="application/json")
+	public @ResponseBody List<Usuario> listaClientes(){
+		
+		return usuarioService.getClientes();
+	}
+	
+	@GetMapping(value = "/api/fornecedor", produces="application/json")
+	public @ResponseBody List<Usuario> listaFornecedores(){
+		return usuarioService.getFornecedores();
+	}
+	
+	@RequestMapping(value = "api/cliente", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	public ResponseEntity<Usuario> cadastrarCliente(@RequestBody Cliente cliente) throws Exception {
+		Usuario retorno = usuarioService.criarUsuario(cliente);
+	    	
+	    if(retorno != null) {
+	    	return new ResponseEntity<>(retorno, HttpStatus.CREATED);
+	    } 
+	    
+	    return new ResponseEntity<>(retorno, HttpStatus.EXPECTATION_FAILED);
+	}
+	    
+	@RequestMapping(value = "api/fornecedor", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	public ResponseEntity<Usuario> cadastrarFornecedor(@RequestBody Fornecedor fornecedor) throws Exception {
+		Usuario retorno = usuarioService.criarUsuario(fornecedor);
+		
+	    if(retorno != null) {
+	    	return new ResponseEntity<>(retorno, HttpStatus.CREATED);
+	    } 
+	    
+	    return new ResponseEntity<>(retorno, HttpStatus.EXPECTATION_FAILED);
+	}
 
-    private class LoginResponse {
+	private class LoginResponse {
         String token;
 
         public LoginResponse(String token) {
