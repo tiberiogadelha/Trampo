@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-
 
 /**
- * Generated class for the HomePage page.
+ * Generated class for the CadastroClientePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +10,16 @@ import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-cadastro-cliente',
+  templateUrl: 'cadastro-cliente.html',
 })
-export class HomePage {
+export class CadastroClientePage {
 
   constructor(public navCtrl: NavController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
-
-  login(){
-    this.navCtrl.push(LoginPage);
+    console.log('ionViewDidLoad CadastroClientePage');
   }
 
 }

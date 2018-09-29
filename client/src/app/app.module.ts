@@ -6,20 +6,40 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { CadastroClientePage } from '../pages/cadastro-cliente/cadastro-cliente';
+import { CadastroFornecedorPage } from '../pages/cadastro-fornecedor/cadastro-fornecedor';
+import { RedefinicaoSenhaPage } from '../pages/redefinicao-senha/redefinicao-senha';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    CadastroClientePage,
+    CadastroFornecedorPage,
+    RedefinicaoSenhaPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      statusbarPadding: true,},
+      { links: [
+        { component: CadastroClientePage, name:'CadastroClientePage', segment: 'cadastro-cliente'},
+        { component: CadastroFornecedorPage, name:'CadastroFornecedorPage', segment: 'cadastro-fornecedor'},
+        { component: LoginPage, name: 'LoginPage', segment: 'login'},
+        { component: RedefinicaoSenhaPage, name: 'RedeficicaoSenhaPage', segment: 'redeficicao-senha'}
+      ]})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    CadastroClientePage,
+    CadastroFornecedorPage,
+    RedefinicaoSenhaPage,
+
   ],
   providers: [
     StatusBar,

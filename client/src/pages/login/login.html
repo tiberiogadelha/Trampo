@@ -1,0 +1,51 @@
+
+<ion-content class="login-content">
+  <p>
+    <a style="margin:1em;" (click)="cadastroFornecedor()"><u>Deseja trabalhar conosco?</u></a>
+  </p>
+
+  <div padding>
+    <ion-avatar item-start>
+      <img class="logo" src="assets/imgs/trampo-logo.png">
+    </ion-avatar>
+    
+    <tr>
+
+        <ion-item>
+          <ion-label floating>Usuário</ion-label>
+          <ion-input type="text" pattern=".{4,}" value=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Senha</ion-label>
+          <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
+        </ion-item>
+        <p>
+          <a (click)="redefinicaoSenha()"><u>Esqueceu a Senha?</u></a>
+        </p>
+
+    </tr> 
+
+    <ion-item>
+      <button ion-button full color="pink" round>
+        <ion-icon ios="ios-log-in" md="md-log-in">
+        </ion-icon>
+        &nbsp; <!-- non-breaking space -->
+        Login
+      </button>
+    </ion-item>
+    <ion-item>
+      <button full ion-button color="dark" round (click)="cadastroCliente()">
+        <ion-icon ios="ios-contacts" md="md-contacts">
+        </ion-icon>
+        &nbsp; <!-- non-breaking space -->
+        Cadastre-se
+      </button>
+    </ion-item>
+
+  </div>
+
+  <div class="botton">
+    <p class="foot-note">&copy; 2018 Trampo - Todos os direitos reservados</p>  
+  </div>
+
+</ion-content>

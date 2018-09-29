@@ -1,25 +1,21 @@
-page-home {
-
-}
-
-ion-header.home-header {
+ion-header.cadastro-fornecedor-header {
     font-family: Dessau-Light;
     font-weight: bold;	
 
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 
     color:	black;
-	background: linear-gradient(to top, white 0%, #DE3C58 100%);
+	background: #EFEEF4;
 }
 
-ion-content.home-content {
+ion-content.cadastro-fornecedor-content {
     font-family: Dessau-Light;
     
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
  	background: transparent !important;
 }
 
@@ -30,20 +26,18 @@ div {
  	background: transparent !important;
 }
 
-h5 {
-    font-weight: bold;	
-}
-
 p {
     font-size: 1em;
-    align-items: left;
- 	background: transparent !important;
 }
 
-button.logout {
-    width: 110px;
-	height: 25px;
+button.especialidades {
+	margin-left:	2em;
+}
 
-	font-size: 12px;
-    font-weight: bold;	
+button {
+	margin:	2em;
+}
+
+.item-ios, .item-md {
+  	background: transparent;
 }
