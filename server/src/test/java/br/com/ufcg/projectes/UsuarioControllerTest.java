@@ -2,6 +2,9 @@ package br.com.ufcg.projectes;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -12,9 +15,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.ufcg.controller.UsuarioController;
 import br.com.ufcg.domain.Cliente;
+import br.com.ufcg.domain.Especialidade;
+import br.com.ufcg.domain.Fornecedor;
 import br.com.ufcg.domain.Usuario;
 import br.com.ufcg.domain.enums.TipoUsuario;
-import br.com.ufcg.repository.EspecialidadeRepository;
 import br.com.ufcg.repository.UsuarioRepository;
 import br.com.ufcg.service.UsuarioService;
 
@@ -31,8 +35,6 @@ public class UsuarioControllerTest {
 	@Autowired
 	UsuarioService us;
 	
-	@Autowired
-	EspecialidadeRepository especialidadeRepository;
 
 	@Test
 	@Transactional
@@ -95,25 +97,50 @@ public class UsuarioControllerTest {
 			assertEquals("A senha deve ter no minimo 8 digitos", e.getMessage());
 		}
 		
-		// Testa cadastrar dois clientes com mesmo email e senha
-		Cliente cliente4 = new Cliente("Tiberio Gadelha M", "tiberiogadelha", "/imgs/foto.png", "tiberio.gomes@ccc.ufcg.edu.br", "123456789");
+		
+	}
+	
+	@Test
+	public void testCriarClienteDuplicado() {
+		// Testa cadastrar dois clientes com mesmo email e login
+		Cliente cliente4 = new Cliente("Tiberio Gadelha M", "tiberiogomes", "/imgs/foto.png", "tiberio@ccc.ufcg.edu.br", "123456789");
 		try {
 			uc.cadastrarCliente(cliente4);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+				
 		try {
 			uc.cadastrarCliente(cliente4);
 		} catch (Exception e) {
 			assertEquals("Email e/ou login ja estao sendo usandos. Tente outros, por favor.", e.getMessage());
 		}
-		
 	}
-	/*
+	
 	@Test
-	public void testCriarFornecedor() {
-		fail("Not yet implemented");
+	public void testCriarFornecedorValido() {
+
+		List<Especialidade> listaEspecialidade = new ArrayList<>();
+		listaEspecialidade.add(new Especialidade("Pintor"));
+		listaEspecialidade.add(new Especialidade("Encanador"));
+		listaEspecialidade.add(new Especialidade("Pedreiro"));
+		
+		Fornecedor fornecedor1 = new Fornecedor("Carlos Alberto dos Anjos", "carlosaba", "/imgs/foto.png", "carlos.alberto1@gmail.com","123456789", listaEspecialidade);
+		try {
+			uc.cadastrarFornecedor(fornecedor1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Usuario foundByLogin = null;
+		try {
+			foundByLogin = us.getByLogin(fornecedor1.getLogin());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertTrue(foundByLogin.getNomeCompleto().equals(fornecedor1.getNomeCompleto()));
+		assertEquals(3, ((Fornecedor) foundByLogin).getListaEspecialidades().size());
 	}
-	*/
+	
+	
 }

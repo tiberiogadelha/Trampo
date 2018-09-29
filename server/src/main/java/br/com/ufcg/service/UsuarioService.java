@@ -6,10 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ufcg.domain.Especialidade;
 import br.com.ufcg.domain.Usuario;
 import br.com.ufcg.domain.enums.TipoUsuario;
-import br.com.ufcg.repository.EspecialidadeRepository;
 import br.com.ufcg.repository.UsuarioRepository;
 
 @Service
@@ -18,14 +16,9 @@ public class UsuarioService {
 	private static final int TAMANHO_MINIMO_NOME = 8;
 	private static final int TAMANHO_MINIMO_SENHA = 8;
 	private static final int TAMANHO_MINIMO_LOGIN = 4;
-	private static final String ESPACO_EM_BRANCO = " ";
-	private static final String VAZIO = "";
 	
 	@Autowired
 	UsuarioRepository usuarioRepository;
-	
-	@Autowired
-	EspecialidadeRepository especialidadeRepository;
 	
 	public Usuario getByLogin(String login) throws Exception {
 		Usuario usuario = usuarioRepository.findByLogin(login);
@@ -127,35 +120,4 @@ public class UsuarioService {
 		return fornecedores;
 	}
 	
-	private boolean validarEspecialidade(Especialidade especialidade) throws Exception {
-		String nome = especialidade.getNome();
-		boolean ehUnica = especialidadeEhUnica(especialidade);
-		
-		if(!nome.equals(ESPACO_EM_BRANCO) && !nome.equals(VAZIO)  && ehUnica) {
-			return true;
-		}
-		
-		throw new Exception("Insira uma especialidade valida");
-	}
-	
-	public boolean especialidadeEhUnica(Especialidade especialidade) throws Exception {
-		Especialidade esp = especialidadeRepository.findByNome(especialidade.getNome());
-		
-		if(esp == null) {
-			return true;
-		}
-		
-		throw new Exception("Ja existe uma especialidade com esse nome!");
-	}
-	public Especialidade criarEspecialidade(Especialidade especialidade) throws Exception {
-		if(validarEspecialidade(especialidade)) {
-			return especialidadeRepository.save(especialidade);
-		}
-		
-		return null;
-	}
-
-	public List<Especialidade> getEspecialidades() {
-		return especialidadeRepository.findAll();
-	}
 }
