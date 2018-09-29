@@ -20,27 +20,27 @@ public class EspecialidadeService {
 	
 	private boolean validarEspecialidade(Especialidade especialidade) throws Exception {
 		String nome = especialidade.getNome();
-		boolean ehUnica = especialidadeEhUnica(especialidade);
+		boolean ehUnica = especialidadeEhUnica(nome);
 		
-		if(!nome.equals(ESPACO_EM_BRANCO) && !nome.equals(VAZIO)  && ehUnica) {
-			return true;
+		if (nome.equals(ESPACO_EM_BRANCO) || nome.equals(VAZIO) || !ehUnica) {
+			throw new Exception("Insira uma especialidade valida");
 		}
 		
-		throw new Exception("Insira uma especialidade valida");
+		return true;
 	}
 	
-	private boolean especialidadeEhUnica(Especialidade especialidade) throws Exception {
-		Especialidade esp = especialidadeRepository.findByNome(especialidade.getNome());
+	private boolean especialidadeEhUnica(String nomeEspecialidade) throws Exception {
+		Especialidade especialidade = especialidadeRepository.findByNome(nomeEspecialidade);
 		
-		if(esp == null) {
-			return true;
+		if (especialidade != null) {
+			throw new Exception("Ja existe uma especialidade com esse nome!");
 		}
 		
-		throw new Exception("Ja existe uma especialidade com esse nome!");
+		return true;
 	}
 	
 	public Especialidade criarEspecialidade(Especialidade especialidade) throws Exception {
-		if(validarEspecialidade(especialidade)) {
+		if (validarEspecialidade(especialidade)) {
 			return especialidadeRepository.save(especialidade);
 		}
 		
@@ -55,7 +55,7 @@ public class EspecialidadeService {
 		Iterable<Especialidade> especialidades = getEspecialidades();
 		List<String> nomes = new ArrayList<>();
 		
-		for(Especialidade especialidade: especialidades) {
+		for (Especialidade especialidade: especialidades) {
 			nomes.add(especialidade.getNome());
 		}
 		
