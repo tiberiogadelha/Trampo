@@ -3,6 +3,7 @@ package br.com.ufcg.controller;
 import java.util.Date;
 import java.util.List;
 
+import br.com.ufcg.util.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,25 +35,36 @@ public class UsuarioController {
     public static final String USUARIO_NAO_EXISTENTE = "Usuario nao existe";
     public static final String SENHA_INCORRETA = "Senha incorreta";
     public static final String SECRET = "ProjetoES";
+    public static final String LOGIN_SUCESSO = "Login efetuado com sucesso !";
     public static final Integer HORAS = (3600 * 1000);
     public static final Integer HORAS_NO_DIA = 24;
 
     @RequestMapping(value = "api/login", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginForm usuario) throws Exception {
+    public ResponseEntity<Response> login(@RequestBody LoginForm usuario) {
 
+        Response response = new Response();
 
         if (usuario.getLogin() == null || usuario.getSenha() == null) {
-            return new ResponseEntity<>(new LoginResponse(STRING_VAZIA), HttpStatus.NOT_ACCEPTABLE);
+            response.setMessage(STRING_VAZIA);
+            response.setStatus(HttpStatus.NOT_ACCEPTABLE.value());
+            return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
         }
 
-        Usuario usuAutenticado = usuarioService.getByLogin(usuario.getLogin());
+        Usuario usuAutenticado;
 
-        if (usuAutenticado == null) {
-            return new ResponseEntity<>(new LoginResponse(USUARIO_NAO_EXISTENTE), HttpStatus.NOT_FOUND);
+        try {
+             usuAutenticado = usuarioService.getByLogin(usuario.getLogin());
+        }catch(Exception e) {
+            response.setMessage(USUARIO_NAO_EXISTENTE);
+            response.setStatus(HttpStatus.NOT_FOUND.value());
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
+
 
         if (!usuario.getSenha().equals(usuAutenticado.getSenha())) {
-            return new ResponseEntity<>(new LoginResponse(SENHA_INCORRETA), HttpStatus.UNAUTHORIZED);
+            response.setMessage(SENHA_INCORRETA);
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
         
         String token = Jwts.builder()
@@ -61,7 +73,10 @@ public class UsuarioController {
 				            .setExpiration(new Date(System.currentTimeMillis() + HORAS_NO_DIA * HORAS))
 				            .compact();
 
-        return new ResponseEntity<>(new LoginResponse(token), HttpStatus.OK);
+        response.setMessage(LOGIN_SUCESSO);
+        response.setData(new LoginResponse(token));
+        response.setStatus(HttpStatus.OK.value());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 	
 	@GetMapping(value = "/api/cliente", produces="application/json")

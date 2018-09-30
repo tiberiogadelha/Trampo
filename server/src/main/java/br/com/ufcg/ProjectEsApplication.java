@@ -1,5 +1,7 @@
 package br.com.ufcg;
 
+import br.com.ufcg.middlewares.ClienteFilter;
+import br.com.ufcg.middlewares.jwt.TokenFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -8,7 +10,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import br.com.ufcg.jwt.TokenFilter;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class ProjectEsApplication {
@@ -16,15 +18,28 @@ public class ProjectEsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectEsApplication.class, args);
 	}
-	
+
+
 	@Bean
 	public FilterRegistrationBean filtroJwt() {
+		ArrayList<String> urlPatterns = new ArrayList<>();
+		urlPatterns.add("/api/servicos/*");
 		FilterRegistrationBean frb = new FilterRegistrationBean();
 		frb.setFilter(new TokenFilter());
-		frb.addUrlPatterns("/usuarios/u/*");
-
+		frb.setUrlPatterns(urlPatterns);
 		return frb;
 	}
+
+	@Bean
+	public FilterRegistrationBean filtroCliente() {
+		ArrayList<String> urlPatterns = new ArrayList<>();
+		urlPatterns.add("/api/servicos/*");
+		FilterRegistrationBean frb = new FilterRegistrationBean();
+		frb.setFilter(new ClienteFilter());
+		frb.setUrlPatterns(urlPatterns);
+		return frb;
+	}
+
 
 	@Bean
 	public FilterRegistrationBean corsFilter() {
