@@ -38,12 +38,12 @@ public class Servico {
     private Endereco endereco;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Cliente.class)
-    @JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_USUARIO", updatable = false)
-    private Cliente id_cliente;
+    @JoinColumn(name = "CLIENTE", referencedColumnName = "ID_USUARIO", updatable = false)
+    private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Fornecedor.class)
-    @JoinColumn(name = "ID_FORNECEDOR", referencedColumnName = "ID_USUARIO")
-    private Fornecedor id_fornecedor;
+    @JoinColumn(name = "FORNECEDOR", referencedColumnName = "ID_USUARIO")
+    private Fornecedor fornecedor;
 
     @Enumerated
     @Column(name = "CD_STATUS")
@@ -100,20 +100,20 @@ public class Servico {
         this.endereco = endereco;
     }
 
-    public Cliente getId_cliente() {
-        return id_cliente;
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
-    public void setId_cliente(Cliente id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Fornecedor getId_fornecedor() {
-        return id_fornecedor;
+    public Fornecedor getFornecedor() {
+        return fornecedor;
     }
 
-    public void setId_fornecedor(Fornecedor id_fornecedor) {
-        this.id_fornecedor = id_fornecedor;
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
     public TipoStatus getStatus() {

@@ -75,7 +75,7 @@ public class TokenFilter extends GenericFilterBean {
 
             TipoUsuario tipoUsuario = usuarioLogado.getTipo();
 
-            request.setAttribute("userId", usuarioLogado.getId());
+            request.setAttribute("user", usuarioLogado);
 
             if(tipoUsuario.equals(TipoUsuario.CLIENTE)) {
                 request.setAttribute("userType", "Cliente");

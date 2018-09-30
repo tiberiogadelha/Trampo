@@ -29,11 +29,8 @@ public class ServicoController {
         Response response;
 
         try {
-            Long userId = (Long) request.getAttribute("userId");
-
-            Cliente cliente = new Cliente();
-            cliente.setId(userId);
-            servico.setId_cliente(cliente);
+            Cliente cliente = (Cliente) request.getAttribute("user");
+            servico.setCliente(cliente);
             servico.setStatus(TipoStatus.EM_ABERTO);
 
             Servico servicoCadastrado = servicoService.criarServico(servico);

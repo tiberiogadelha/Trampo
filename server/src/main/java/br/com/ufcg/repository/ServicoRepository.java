@@ -18,7 +18,7 @@ public interface ServicoRepository extends JpaRepository<Servico, Long> {
     //@Query(value="SELECT * FROM TB_SERVICO s WHERE s.id_cliente=:c_id ORDER BY s.data ASC s.horario ASC", nativeQuery = true)
     //List<Servico> getServicosCliente(@Param("c_id") Integer id_cliente);
 
-    @Query(value="SELECT s FROM Servico s WHERE s.data=:dt AND s.horario=:hr AND s.id_cliente=:user AND s.tipo=:tipo")
-    Servico findServico(@Param("dt") LocalDate data, @Param("hr") LocalTime hora, @Param("user") Cliente userid, @Param("tipo") String tipo);
+    @Query(value="SELECT s FROM Servico s WHERE s.data=:dt AND s.horario=:hr AND s.cliente=:user AND s.tipo=:tipo")
+    Servico findServico(@Param("dt") LocalDate data, @Param("hr") LocalTime hora, @Param("user") Cliente user, @Param("tipo") String tipo);
 
 }

@@ -2,18 +2,13 @@ package br.com.ufcg.domain;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 import br.com.ufcg.domain.enums.TipoUsuario;
 
 @Entity
 @DiscriminatorValue(value = "Fornecedor")
+@Embeddable
 public class Fornecedor extends Usuario {
 	
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
