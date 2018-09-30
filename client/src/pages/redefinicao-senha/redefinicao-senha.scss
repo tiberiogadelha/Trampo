@@ -1,17 +1,39 @@
 page-redefinicao-senha {
+    font-family: Dessau-Light;
 
-.title{
-    text-align:center;
-    padding-top: 5em;
-}
+    ion-header.redefinicao-senha-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
+        color:  black;
+        background: #EFEEF4;
+    }
 
-div {
-	padding:2em;
-}
+    ion-content.redefinicao-senha-content {        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-h4 {
-	font-weight: bold;	
-}
+	h4 {
+		font-weight: bold;	
+	    padding-top: 5em;	
+	}
 
+    h5 {
+        font-weight: bold;  
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: 0.5em;
+    }
+
+    .item.error-message {
+        color: red;
+    }
 }
