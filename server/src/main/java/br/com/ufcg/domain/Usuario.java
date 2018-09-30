@@ -11,6 +11,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import br.com.ufcg.domain.enums.TipoUsuario;
 
 @Entity
@@ -36,6 +39,7 @@ public abstract class Usuario {
 	@Column(name = "TX_EMAIL", nullable = false)
 	private String email;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Column(name = "TX_SENHA", nullable = false)
 	private String senha;
 

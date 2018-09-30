@@ -66,7 +66,6 @@ public class UsuarioController {
 	
 	@GetMapping(value = "/api/cliente", produces="application/json")
 	public @ResponseBody List<Usuario> listaClientes(){
-		
 		return usuarioService.getClientes();
 	}
 	

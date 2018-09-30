@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.ufcg.domain.Usuario;
@@ -25,6 +26,9 @@ public class UsuarioService {
 	private static final String TAMANHO_MINIMO_SENHA_EXCEPTION = "A senha deve ter no minimo 8 digitos";
 
 	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
 	UsuarioRepository usuarioRepository;
 	
 	public Usuario getByLogin(String login) throws Exception {
@@ -45,6 +49,9 @@ public class UsuarioService {
 	
 	public Usuario criarUsuario(Usuario usuario) throws Exception {
 		if (validarUsuario(usuario)) {
+			// ENCRIPTANDO A SENHA ANTES DO CADASTRO DO USUÁRIO
+			usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+			
 			return usuarioRepository.save(usuario);
 		} 
 		
@@ -104,7 +111,7 @@ public class UsuarioService {
 	
 	public List<Usuario> getClientes() {
 		Iterable<Usuario> listaUsuarios = usuarioRepository.findAll();
-		ArrayList<Usuario> clientes = new ArrayList<Usuario>();
+		ArrayList<Usuario> clientes = new ArrayList<>();
 		
 		for (Usuario usuario : listaUsuarios) {
 			if (TipoUsuario.CLIENTE.equals(usuario.getTipo())) {
@@ -117,7 +124,7 @@ public class UsuarioService {
 	
 	public List<Usuario> getFornecedores() {
 		Iterable<Usuario> listaUsuarios = usuarioRepository.findAll();
-		ArrayList<Usuario> fornecedores = new ArrayList<Usuario>();
+		ArrayList<Usuario> fornecedores = new ArrayList<>();
 		
 		for (Usuario usuario : listaUsuarios) {
 			if (TipoUsuario.FORNECEDOR.equals(usuario.getTipo())) {
