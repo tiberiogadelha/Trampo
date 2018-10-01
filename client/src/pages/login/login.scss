@@ -1,34 +1,40 @@
-// Login Page Configurations
-
-ion-content.login-content {
+page-login {
     font-family: Dessau-Light;
-}
+    
+    a {
+        margin:1em;
+    }
+    
+    p {
+        display: flex;
+        align-items: flex-end ;
+        flex-direction: column;
 
-p {
-    display: flex;
-    align-items: flex-end ;
-    flex-direction: column;
+        margin: 0.2em;
+    }
 
-    margin: 0.2em;
-}
+    div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 
-div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
- 	background: transparent !important;
-}
+    tr {
+        color: white; 
+    }
 
-tr {
-	color: white; 
-}
+    .item.error-message {
+        color: red;
+    }
 
-.item-ios, .item-md {
-  background: transparent;
-}
+    .foot-note {
+        opacity: 0.5;
+        color: black;
+        font-size: 11px;
+    }
 
-.foot-note {
-    opacity: 0.5;
-    color: black;
-    font-size: 11px;
+    .item-ios, .item-md {
+      background: transparent;
+    }
+   
 }

@@ -1,35 +1,39 @@
-ion-header.cadastro-cliente-header {
-    font-family: Dessau-Light;
-    font-weight: bold;	
+page-cadastro-cliente {
+     font-family: Dessau-Light;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+     ion-header.cadastro-cliente-header {
+        font-weight: bold;  
 
-    color:	black;
-	background: #EFEEF4;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-ion-content.cadastro-cliente-content {
-    font-family: Dessau-Light;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
- 	background: transparent !important;
-}
+        color:  black;
+        background: #EFEEF4;
+    }
 
-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
- 	background: transparent !important;
-}
+    ion-content.cadastro-cliente-content {        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-h5 {
-    font-weight: bold;	
-}
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-p {
-    font-size: 1em;
+    h5 {
+        font-weight: bold;  
+    }
+
+    .item.error-message {
+        color: red;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
 }

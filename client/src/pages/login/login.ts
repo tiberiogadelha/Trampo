@@ -5,7 +5,7 @@ import { CadastroFornecedorPage } from '../cadastro-fornecedor/cadastro-forneced
 import { RedefinicaoSenhaPage } from '../redefinicao-senha/redefinicao-senha';
 
 @Component({
-  selector: 'login',
+  selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {

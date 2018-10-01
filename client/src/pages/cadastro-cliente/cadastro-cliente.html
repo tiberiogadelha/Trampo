@@ -24,26 +24,42 @@
 
       <ion-item class="item">
         <ion-label floating>Nome Completo</ion-label>
-        <ion-input type="text" pattern=".{4,}" value=""></ion-input>
+        <ion-input type="text" name="nome" pattern=".{6,}" ngModel required #name="ngModel"
+                   [class.invalid]="name.errors && name.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="name.errors?.required && name.dirty">
+        Informe o seu nome completo
       </ion-item>
       <ion-item>
         <ion-label floating>Nome de Usuário</ion-label>
-        <ion-input type="text" pattern=".{4,}" value=""></ion-input>
+        <ion-input type="text" name="nomeusuario" pattern=".{4,}" ngModel required #username="ngModel"
+                   [class.invalid]="username.errors && username.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="username.errors?.required && username.dirty">
+        Informe o nome do usuário
       </ion-item>
       <ion-item>
         <ion-label floating> Email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" name="email" ngModel required email #email="ngModel"
+                   [class.invalid]="email.errors && email.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="email.errors?.email && email.dirty">
+        Email inválido
       </ion-item>
       <ion-item>
         <ion-label floating>Senha</ion-label>
-        <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
+        <ion-input type="password" name="password" pattern=".{4,}" ngModel required #password="ngModel"
+                   [class.invalid]="password.errors && password.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="password.errors?.required && password.dirty">
+        Informe a senha
       </ion-item>
       <ion-item>
         <ion-label floating>Confirme sua Senha</ion-label>
         <ion-input type="password" value="" pattern=".{6,}" ></ion-input>
       </ion-item>
       <ion-item>
-        <button ion-button round full color="pink">Cadastrar</button>
+        <button class="cadastrar" ion-button round full color="pink">Cadastrar</button>
       </ion-item>
 
     </ion-list>
