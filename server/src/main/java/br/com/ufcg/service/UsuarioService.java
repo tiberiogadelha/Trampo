@@ -3,6 +3,7 @@ package br.com.ufcg.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ufcg.domain.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class UsuarioService {
 	private static final int TAMANHO_MINIMO_LOGIN = 4;
 
 	private static final String USUARIO_NAO_ENCONTRADO_EXCEPTION = "Usuario nao encontrado";
-	private static final String EMAIL_LOGIN_JA_EXISTENTE_EXCEPTION = "Email e/ou login já estão sendo usandos. Tente outros, por favor.";
+	private static final String EMAIL_LOGIN_JA_EXISTENTE_EXCEPTION = "Email e/ou login já estão sendo usados. Tente outros, por favor.";
 	private static final String TAMANHO_MINIMO_NOME_EXCEPTION = "O nome completo deve ter no minimo 8 digitos";
 	private static final String TAMANHO_MINIMO_LOGIN_EXCEPTION = "O login deve ter no minimo 4 digitos e nao pode conter espaco";
 	private static final String TAMANHO_MINIMO_SENHA_EXCEPTION = "A senha deve ter no minimo 8 digitos";
@@ -39,6 +40,7 @@ public class UsuarioService {
 
 	public boolean checkUser(String login, String senha) {
 		Usuario userToCheck = usuarioRepository.findByLoginAndSenha(login, senha);
+
 		
 		return (userToCheck != null);
 	}
